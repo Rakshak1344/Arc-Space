@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:login/demo/forgotPassword.dart';
 import 'package:login/pages/employee_view/employeeHome.dart';
-
 import 'package:login/pages/home_page/wel.dart';
 import 'package:login/pages/login_and_SignUp_pages/employeeLogin.dart';
 import 'package:login/pages/login_and_SignUp_pages/managerLogin.dart';
+import 'package:login/pages/login_and_SignUp_pages/registerCompany.dart';
+import './pages/login_and_SignUp_pages/forgotPassword.dart';
 
 import 'package:login/pages/manager_view/managerHome.dart';
 
 void main() {
-   debugPaintSizeEnabled = true;
+  //  debugPaintSizeEnabled = true;
   // debugPaintBaselinesEnabled = true;
   // debugPaintPointersEnabled = true;
   runApp(MyApp());
@@ -32,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/forgotPassword': (BuildContext context) => new ForgotPassword(),
         '/managerHomePage':(BuildContext context)=> new ManagerHomePage(),
         '/employeeHomePage':(BuildContext context)=> new EmployeeHomePage(),
+        '/registerCompany':(BuildContext context)=> new RegisterACompany(),
       },
     );
   }

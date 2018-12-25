@@ -46,7 +46,9 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
         }
       },
       decoration: InputDecoration(
-          labelText: 'Email / EID', hintText: 'xyz@mail.com / E14'),
+          labelText: 'Email / EID',
+          hintText: 'xyz@mail.com / E14',
+          icon: Icon(Icons.alternate_email)),
     );
   }
 
@@ -61,6 +63,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: '********',
+        icon: Icon(Icons.lock_open),
         suffixIcon: IconButton(
             icon: Icon(Icons.remove_red_eye, color: _eyeButtonColor),
             onPressed: () {
@@ -83,27 +86,28 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
 
   Padding buildForgotPasswordText() {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0,),
+      padding: const EdgeInsets.only(
+        top: 8.0,
+      ),
       child: Container(
-        
-          alignment: Alignment.center,
-          child: FlatButton(
-            child: Text(
-      'Forgot Password?',
-      style: TextStyle(color: Colors.black, fontSize: 12.0),
-            ),
-            // onPressed: (){
-            //   setState(() {
-            //           return buildForgotPasswordDialog(context);
-            //               });
-            onPressed: () {
-      setState(() {
-        Navigator.of(context).pushNamed('/forgotPassword');
-      });
-            },
+        alignment: Alignment.center,
+        child: FlatButton(
+          child: Text(
+            'Forgot Password?',
+            style: TextStyle(color: Colors.black, fontSize: 12.0),
           ),
-          // child: Text('Forgot Password?',style: TextStyle(color: Colors.grey,fontSize: 12.0),),
+          // onPressed: (){
+          //   setState(() {
+          //           return buildForgotPasswordDialog(context);
+          //               });
+          onPressed: () {
+            setState(() {
+              Navigator.of(context).pushNamed('/forgotPassword');
+            });
+          },
         ),
+        // child: Text('Forgot Password?',style: TextStyle(color: Colors.grey,fontSize: 12.0),),
+      ),
     );
   }
 
@@ -238,7 +242,6 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
               height: 20.0,
             ),
             buildPasswordTextField(),
-            
 
             buildCheckboxKeepMeLoggedIn(),
             SizedBox(
@@ -299,18 +302,22 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
     ));
   }
 
-  CheckboxListTile buildCheckboxKeepMeLoggedIn() {
-    return CheckboxListTile(
-            activeColor: Colors.blue,
-            
-            value: _isChecked,
-            onChanged: (v) {
-              setState(() {
-                _isChecked = !_isChecked;
-              });
-            },
-            title: Text('Keep me logged In'),
-            subtitle: Text('As Employee'),
-          );
+  Container buildCheckboxKeepMeLoggedIn() {
+    return Container(
+      margin: EdgeInsets.only(left: 25.0,right: 90.0),
+      
+      child:CheckboxListTile(
+        
+        activeColor: Colors.blue,
+        value: _isChecked,
+        onChanged: (v) {
+          setState(() {
+            _isChecked = !_isChecked;
+          });
+        },
+        title: Text('Keep me logged In'),
+        subtitle: Text('As Employee'),
+      ),
+    );
   }
 }

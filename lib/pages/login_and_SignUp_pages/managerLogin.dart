@@ -46,7 +46,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         }
       },
       decoration: InputDecoration(
-          labelText: 'Email / MID', hintText: 'xyz@mail.com / M14'),
+          labelText: 'Email / MID', hintText: 'xyz@mail.com / M14',icon: Icon(Icons.alternate_email)),
     );
   }
 
@@ -59,6 +59,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         }
       },
       decoration: InputDecoration(
+        icon: Icon(Icons.lock_open),
         labelText: 'Password',
         hintText: '********',
         suffixIcon: IconButton(
@@ -200,25 +201,28 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                   
             ),
             onPressed: () {
-              Navigator.of(context).pop('/home');
+              Navigator.of(context).pushNamed('/registerCompany');
             },
           ),
         ));
   }
 
-  CheckboxListTile buildCheckboxKeepMeLoggedIn() {
-    return CheckboxListTile(
-            activeColor: Colors.blue,
-            
-            value: _isChecked,
-            onChanged: (v) {
-              setState(() {
-                _isChecked = !_isChecked;
-              });
-            },
-            title: Text('Keep me logged In'),
-            subtitle: Text('As Manager'),
-          );
+  Container buildCheckboxKeepMeLoggedIn() {
+    return Container(
+      margin: EdgeInsets.only(left: 25.0,right: 90.0),
+      child: CheckboxListTile(
+              activeColor: Colors.blue,
+              
+              value: _isChecked,
+              onChanged: (v) {
+                setState(() {
+                  _isChecked = !_isChecked;
+                });
+              },
+              title: Text('Keep me logged In'),
+              subtitle: Text('As Manager'),
+            ),
+    );
   }
 
   @override

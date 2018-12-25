@@ -56,8 +56,20 @@ class _WelcomeState extends State<Welcome> {
                       buildEmployeeIcon(),
                       buildManagerTxtView(),
                       buildEmployeeTxtView(),
-                      buildNewUserTxtView(),
-                      buildRegCompanyBtn(),
+                      // buildNewUserTxtView(),
+                      // buildRegCompanyBtn(),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Container(
+                            margin: EdgeInsets.all(10.0),
+                            width: double.infinity,
+                            height: 1.5,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -76,7 +88,7 @@ class _WelcomeState extends State<Welcome> {
             ),
             child: FlatButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/loginPage');
+                Navigator.of(context).pushNamed('/registerCompany');
               },
               color: Colors.white,
               textColor: Colors.black,
@@ -207,7 +219,7 @@ class _WelcomeState extends State<Welcome> {
             });
           }
         },
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(10.0),
         child: Icon(
           icon,
           color: iconColor,
@@ -218,7 +230,7 @@ class _WelcomeState extends State<Welcome> {
       height: 100.0,
       width: 100.0,
       decoration: BoxDecoration(
-          shape: BoxShape.circle,
+          shape: BoxShape.rectangle,
           border: Border.all(color: Colors.red, width: 2.0)),
     );
   }
