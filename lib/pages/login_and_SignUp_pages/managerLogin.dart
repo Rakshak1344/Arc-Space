@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class ManagerLoginPage extends StatefulWidget {
   @override
   _ManagerLoginPageState createState() => _ManagerLoginPageState();
@@ -12,6 +13,8 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
   bool _isChecked = false;
   bool _isObscured = true;
   Color _eyeButtonColor = Colors.grey;
+
+
 
   Padding buildTitle() {
     return Padding(
@@ -52,6 +55,8 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
 
   TextFormField buildPasswordTextField() {
     return TextFormField(
+      keyboardType: TextInputType.number,
+      maxLength: 6,
       onSaved: (passwordInput) => _password = passwordInput,
       validator: (passwordInput) {
         if (passwordInput.isEmpty) {
@@ -62,6 +67,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         icon: Icon(Icons.lock_open),
         labelText: 'Password',
         hintText: '********',
+        
         suffixIcon: IconButton(
             icon: Icon(Icons.remove_red_eye, color: _eyeButtonColor),
             onPressed: () {
@@ -84,18 +90,15 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
 
   Padding buildForgotPasswordText() {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 10.0),
       child: Container(
-        alignment: Alignment.center,
+        alignment: Alignment.centerRight,
         child: FlatButton(
           child: Text(
             'Forgot Password?',
             style: TextStyle(color: Colors.black, fontSize: 12.0),
           ),
-          // onPressed: (){
-          //   setState(() {
-          //           return buildForgotPasswordDialog(context);
-          //               });
+          // onPressed: _showModalSheet,
           onPressed: () {
             setState(() {
               Navigator.of(context).pushNamed('/forgotPassword');
@@ -111,7 +114,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
     return Align(
       child: SizedBox(
         height: 50.0,
-        width: 275.0,
+        width: double.infinity,
         child: FlatButton(
           onPressed: () {
             if (_formKey.currentState.validate()) {
@@ -202,6 +205,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
             ),
             onPressed: () {
               Navigator.of(context).pushNamed('/registerCompany');
+              // Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterACompany(),fullscreenDialog: true));
             },
           ),
         ));
@@ -251,7 +255,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
             ),
             buildPasswordTextField(),
             
-            buildCheckboxKeepMeLoggedIn(),
+            // buildCheckboxKeepMeLoggedIn(),
             SizedBox(
               height: 20.0,
             ),

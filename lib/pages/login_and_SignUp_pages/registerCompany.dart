@@ -82,7 +82,7 @@ class _RegisterACompanyState extends State<RegisterACompany> {
           child: Expanded(
             child: RadioListTile(
               activeColor: Colors.blue,
-              title: Text('FeMale'),
+              title: Text('Female'),
               groupValue: grpValue,
               value: 2,
               onChanged: (int g) => gender(g),
@@ -95,27 +95,24 @@ class _RegisterACompanyState extends State<RegisterACompany> {
 
   Align buildLoginButton(BuildContext context) {
     return Align(
-      child: Padding(
-        padding: const EdgeInsets.only(left:45.0),
-        child: SizedBox(
-          
-          height: 50.0,
-          width: double.infinity,
-          child: FlatButton(
-            splashColor: Colors.white,
-            onPressed: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                //TODO: Check Values and navigate to new Page
-                Navigator.of(context).pushNamed('/home');
-              }
-            },
-            color: Colors.grey[900],
-            child:
-                Text('CREATE COMPANY', style: Theme.of(context).primaryTextTheme.button,),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          ),
+      child: SizedBox(
+        
+        height: 50.0,
+        width: double.infinity,
+        child: FlatButton(
+          splashColor: Colors.white,
+          onPressed: () {
+            if (_formKey.currentState.validate()) {
+              _formKey.currentState.save();
+              //TODO: Check Values and navigate to new Page
+              Navigator.of(context).pushNamed('/home');
+            }
+          },
+          color: Colors.grey[900],
+          child:
+              Text('CREATE COMPANY', style: Theme.of(context).primaryTextTheme.button,),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
         ),
       ),
     );
@@ -243,6 +240,8 @@ class _RegisterACompanyState extends State<RegisterACompany> {
 
     TextFormField buildPasswordTextField() {
     return TextFormField(
+      keyboardType: TextInputType.number,
+      maxLength: 6,
       onSaved: (passwordInput) => _password = passwordInput,
       validator: (passwordInput) {
         if (passwordInput.isEmpty) {
@@ -316,6 +315,7 @@ class _RegisterACompanyState extends State<RegisterACompany> {
               buildPasswordTextField(),
               SizedBox(height: 30.0,),
               buildLoginButton(context),
+              
             ],
           ),
         ),

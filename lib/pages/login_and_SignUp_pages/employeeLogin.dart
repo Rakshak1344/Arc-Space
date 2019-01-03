@@ -54,12 +54,16 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
 
   TextFormField buildPasswordTextField() {
     return TextFormField(
+      keyboardType: TextInputType.number,
+      maxLength: 6,
       onSaved: (passwordInput) => _password = passwordInput,
+      
       validator: (passwordInput) {
         if (passwordInput.isEmpty) {
           return 'Password Invalid';
         }
       },
+
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: '********',
@@ -87,10 +91,10 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
   Padding buildForgotPasswordText() {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 8.0,
+        top: 10.0,
       ),
       child: Container(
-        alignment: Alignment.center,
+        alignment: Alignment.centerRight,
         child: FlatButton(
           child: Text(
             'Forgot Password?',
@@ -115,7 +119,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
     return Align(
       child: SizedBox(
         height: 50.0,
-        width: 275.0,
+        width: double.infinity,
         child: FlatButton(
           onPressed: () {
             if (_formKey.currentState.validate()) {
@@ -243,7 +247,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
             ),
             buildPasswordTextField(),
 
-            buildCheckboxKeepMeLoggedIn(),
+            // buildCheckboxKeepMeLoggedIn(),
             SizedBox(
               height: 20.0,
             ),

@@ -41,6 +41,30 @@ flutter:
      - assets/arc.png
      - assets/arcNew.png
      - assets/arc1.png
+     - assets/background1.jpg
+     - assets/background2.jpg
+     - assets/colorspick.jpg
+     - assets/design.jpg
+     - assets/desk.jpg
+     - assets/desk1.jpg
+     - assets/idbackground.jpg
+     - assets/room.jpg
+     - assets/structure.jpg
+     - assets/icons/addEmployee.png
+     - assets/icons/addEmployee1.png
+     - assets/icons/addProject.png
+     - assets/icons/addProject1.png
+     - assets/icons/addUser.png
+     - assets/icons/addUser1.png
+     - assets/icons/inspection.png
+     - assets/icons/inspection1.png
+     - assets/icons/manager.png
+     - assets/icons/manager1.png
+     - assets/icons/settings.png
+     - assets/icons/settings1.png
+     - assets/icons/worker.png
+     - assets/icons/worker1.png
+     
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

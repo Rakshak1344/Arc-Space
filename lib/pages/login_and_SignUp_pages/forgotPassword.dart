@@ -7,6 +7,10 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
+  // Widget build(BuildContext context) {
+  //   return _buildForgotPasswordDialog(context);
+    
+  // }
   Widget build(BuildContext context) {
     return MaterialApp(
         color: Colors.white,
@@ -21,7 +25,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 children: <Widget>[_buildForgotPasswordDialog(context)],
               ),
             )));
-    //  _buildForgotPasswordDialog(context);
   }
 
   Dialog _buildForgotPasswordDialog(BuildContext context) {
