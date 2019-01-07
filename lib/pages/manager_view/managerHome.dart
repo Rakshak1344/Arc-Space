@@ -79,8 +79,9 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
       //         Colors.black.withOpacity(0.5), BlendMode.dstATop),
       //   ),
       // ),
+      
       child: Scaffold(
-        // backgroundColor: Colors.white,
+        backgroundColor: Colors.deepPurple,
         appBar: AppBar(
           // elevation: defaultTargetPlatform == TargetPlatform.android ? 5.0 : 0.0,
           elevation: 0.0,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:login/demo/paint.dart';
+import 'package:login/pages/manager_view/addProject.dart';
 import 'package:login/pages/manager_view/manageProjects.dart';
 
 import 'package:login/pages/employee_view/employeeHome.dart';
@@ -10,11 +12,24 @@ import 'package:login/pages/login_and_SignUp_pages/registerCompany.dart';
 import './pages/login_and_SignUp_pages/forgotPassword.dart';
 
 import 'package:login/pages/manager_view/managerHome.dart';
+// import 'package:camera/camera.dart';
 
+// List<CameraDescription> cameras;
+
+// Future<Null> main() async {
+//   //  debugPaintSizeEnabled = true;
+//   // debugPaintBaselinesEnabled = true;
+//   debugPaintPointersEnabled = true;
+  
+//   cameras = await availableCameras();
+//   runApp(MyApp());
+// }
 void main() {
   //  debugPaintSizeEnabled = true;
   // debugPaintBaselinesEnabled = true;
   // debugPaintPointersEnabled = true;
+  
+  
   runApp(MyApp());
 }
 
@@ -37,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/managerHomePage': (BuildContext context) => new ManagerHomePage(),
         '/employeeHomePage': (BuildContext context) => new EmployeeHomePage(),
         '/registerCompany': (BuildContext context) => new RegisterACompany(),
+        '/addProject':(BuildContext context)=> new AddProject(),
       },
     );
   }

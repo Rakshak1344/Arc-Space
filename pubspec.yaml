@@ -19,6 +19,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  camera:
+  image_picker:
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,9 @@ flutter:
      - assets/idbackground.jpg
      - assets/room.jpg
      - assets/structure.jpg
+     - assets/project1.jpg
+     - assets/project2.jpg
+     
      
      
 

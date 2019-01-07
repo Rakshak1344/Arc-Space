@@ -7,7 +7,7 @@ class MainContent extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.edit, size: 100, color: Colors.white),
+          child: Icon(Icons.edit, size: 50, color: Colors.white),
         ),
         Align(
           alignment: Alignment.center,
@@ -26,7 +26,7 @@ class MainContent extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.person, size: 100, color: Colors.white),
+          child: Icon(Icons.person, size: 50, color: Colors.white),
         ),
         Align(
           alignment: Alignment.center,
@@ -45,7 +45,7 @@ class MainContent extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.color_lens, size: 100, color: Colors.white),
+          child: Icon(Icons.color_lens, size: 50, color: Colors.white),
         ),
         Align(
           alignment: Alignment.center,
@@ -60,11 +60,11 @@ class MainContent extends StatelessWidget {
 
   Column buildColumnTeal() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.person, size: 100, color: Colors.white),
+          child: Icon(Icons.person, size: 50, color: Colors.white),
         ),
         Align(
           alignment: Alignment.center,
@@ -79,11 +79,11 @@ class MainContent extends StatelessWidget {
 
   Column buildColumnOrange() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Icon(Icons.person, size: 100, color: Colors.white),
+          child: Icon(Icons.person, size: 50, color: Colors.white),
         ),
         Align(
           alignment: Alignment.center,
@@ -99,10 +99,12 @@ class MainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           child: Container(
+            
             child: Column(
               children: <Widget>[
                 Row(children: <Widget>[
@@ -111,8 +113,9 @@ class MainContent extends StatelessWidget {
                   ),
                   Text(
                     'Manage & Explore',
-                    style: TextStyle(fontSize: 30.0),
+                    style: TextStyle(fontSize: 20.0,color: Colors.white),
                     textAlign: TextAlign.left,
+                    
                   ),
                 ]),
                 // SizedBox(height: 50.0,),
@@ -126,6 +129,7 @@ class MainContent extends StatelessWidget {
                             Navigator.of(context).pushNamed('/manageProjects');
                           },
                           child: Container(
+                            
                             height: 300.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5.0),
