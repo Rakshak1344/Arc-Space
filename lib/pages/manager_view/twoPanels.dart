@@ -96,22 +96,16 @@ class _TwoPanelsState extends State<TwoPanels> {
                     onTap: () {
                       Navigator.of(context).pushNamed('/addProject');
                     }),
-                Divider(
-                  height: 10.0,
-                  color: Colors.deepPurple,
-                ),
-                ListTile(
-                  title: Text(
-                    'Edit Project',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700, color: Colors.black),
-                  ),
-                  trailing: Icon(Icons.edit, color: Colors.deepPurple),
-                ),
-                Divider(
-                  height: 10.0,
-                  color: Colors.deepPurple,
-                ),
+               divider(),
+                // ListTile(
+                //   title: Text(
+                //     'Edit Project',
+                //     style: TextStyle(
+                //         fontWeight: FontWeight.w700, color: Colors.black),
+                //   ),
+                //   trailing: Icon(Icons.edit, color: Colors.deepPurple),
+                // ),
+                // divider(),
                 ListTile(
                   title: Text(
                     'Cancel Project',
@@ -120,22 +114,16 @@ class _TwoPanelsState extends State<TwoPanels> {
                   ),
                   trailing: Icon(Icons.cancel, color: Colors.deepPurple),
                 ),
-                Divider(
-                  height: 10.0,
-                  color: Colors.deepPurple,
-                ),
-                ListTile(
-                  title: Text(
-                    'Attendance',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700, color: Colors.black),
-                  ),
-                  trailing: Icon(Icons.note, color: Colors.deepPurple),
-                ),
-                Divider(
-                  height: 10.0,
-                  color: Colors.deepPurple,
-                ),
+                divider(),
+                // ListTile(
+                //   title: Text(
+                //     'Attendance',
+                //     style: TextStyle(
+                //         fontWeight: FontWeight.w700, color: Colors.black),
+                //   ),
+                //   trailing: Icon(Icons.note, color: Colors.deepPurple),
+                // ),
+                // divider(),
                 ListTile(
                   title: Text(
                     'Sketch Pad',
@@ -145,10 +133,7 @@ class _TwoPanelsState extends State<TwoPanels> {
                   trailing: Icon(Icons.color_lens, color: Colors.deepPurple),
                   onTap: () => Navigator.of(context).pushNamed('/sketchPad'),
                 ),
-                Divider(
-                  height: 10.0,
-                  color: Colors.deepPurple,
-                ),
+                divider(),
                 ListTile(
                   title: Text(
                     'Settings',
@@ -165,6 +150,13 @@ class _TwoPanelsState extends State<TwoPanels> {
           ],
         ),
       ),
+    );
+  }
+
+  Divider divider() {
+    return Divider(
+      height: 10.0,
+      color: Colors.deepPurple,
     );
   }
 
@@ -190,8 +182,6 @@ class _TwoPanelsState extends State<TwoPanels> {
     );
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -210,7 +200,9 @@ class CardProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed('/projectInfo');
+      },
       child: Card(
         elevation: 10.0,
         child: Column(
@@ -281,5 +273,3 @@ class CardProject extends StatelessWidget {
     );
   }
 }
-
-

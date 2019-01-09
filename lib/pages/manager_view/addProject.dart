@@ -11,6 +11,7 @@ class AddProject extends StatefulWidget {
 class _AddProjectState extends State<AddProject> {
   final _addProjectKey = GlobalKey<FormState>();
   int grpValue;
+  String _projectTitle,_projectDescription,_clientName,_projectArea,_projectCity,_phone,_pincode;
 
   File _imageFile;
 
@@ -114,12 +115,16 @@ class _AddProjectState extends State<AddProject> {
         // ),
         Container(
           child: Expanded(
+            
             flex: 1,
             child: Container(
               // margin: EdgeInsets.only(left: 1.0),
               child: RadioListTile(
+                
                 activeColor: Colors.deepPurple,
+                
                 title: Text(
+                  
                   'Male',
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
@@ -274,35 +279,85 @@ class _AddProjectState extends State<AddProject> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    onSaved: (projectTitle)=>_projectTitle=projectTitle,
+                    validator: (projectTitle){
+                      if(projectTitle.isEmpty){
+                        return "Title required";
+                      }else if(projectTitle.length>20){
+                        return "Title must be 20+ char";
+                      }
+                    },
                     decoration: InputDecoration(
                         labelText: 'Title', hintText: 'eg: Gong'),
                   ),
                   TextFormField(
+                    onSaved: (projectDescription)=>_projectDescription=projectDescription,
+                    validator: (projectDescription){
+                      if(projectDescription.isEmpty){
+                        return "Description required";
+                      }else if(projectDescription.length<10){
+                        return "must be 10+ char";
+                      }
+                    },
                     maxLines: 5,
                     decoration: InputDecoration(
                       labelText: 'Description',
                     ),
                   ),
                   TextFormField(
+                    onSaved: (clientName)=>_clientName=clientName,
+                    validator: (clientName){
+                      if(clientName.isEmpty){
+                        return "Description required";
+                      }
+                    },
                     decoration: InputDecoration(
                         labelText: 'Client Name', hintText: 'eg: John'),
                   ),
                   buildSelectGender(),
                   TextFormField(
+                    onSaved: (phone)=>_phone= phone,
+                    validator: (phone){
+                      if(phone.isEmpty){
+                        return "Phno required";
+                      }else if(phone.length<10){
+                        return "Phno cannot be less than 10";
+                      }
+                    },
                     keyboardType: TextInputType.number,
                     maxLength: 10,
                     decoration: InputDecoration(
                         labelText: 'Phno', hintText: 'eg: XXX-XXX-XXXX'),
                   ),
                   TextFormField(
+                    onSaved: (area)=>_projectArea= area,
+                    validator: (area){
+                      if(area.isEmpty){
+                        return "Area required";
+                      }
+                    },
                     decoration: InputDecoration(
                         labelText: 'Area', hintText: 'eg: Time Street'),
                   ),
                   TextFormField(
+                    onSaved: (city)=>_projectCity= city,
+                    validator: (city){
+                      if(city.isEmpty){
+                        return "city required";
+                      }
+                    },
                     decoration: InputDecoration(
                         labelText: 'City', hintText: 'eg: Bangalore'),
                   ),
                   TextFormField(
+                    onSaved: (pincode)=>_pincode= pincode,
+                    validator: (pincode){
+                      if(pincode.isEmpty){
+                        return "pincode required";
+                      }else if(pincode.length<6){
+                        return "must be 6 char";
+                      }
+                    },
                     keyboardType: TextInputType.number,
                     maxLength: 6,
                     decoration: InputDecoration(
@@ -315,7 +370,11 @@ class _AddProjectState extends State<AddProject> {
                         elevation: 0.0,
                         color: Colors.deepPurple,
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          if(_addProjectKey.currentState.validate()){
+                            _addProjectKey.currentState.save();
+                            Navigator.of(context).pop();
+                          }
+                          
                         },
                         child: Text(
                           'Add Project',

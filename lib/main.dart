@@ -9,6 +9,7 @@ import 'package:login/pages/home_page/wel.dart';
 import 'package:login/pages/login_and_SignUp_pages/employeeLogin.dart';
 import 'package:login/pages/login_and_SignUp_pages/managerLogin.dart';
 import 'package:login/pages/login_and_SignUp_pages/registerCompany.dart';
+import 'package:login/pages/manager_view/projectInfo.dart';
 import './pages/login_and_SignUp_pages/forgotPassword.dart';
 
 import 'package:login/pages/manager_view/managerHome.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/employeeHomePage': (BuildContext context) => new EmployeeHomePage(),
         '/registerCompany': (BuildContext context) => new RegisterACompany(),
         '/addProject':(BuildContext context)=> new AddProject(),
+        '/projectInfo':(BuildContext context)=>new InfoPage(),
       },
     );
   }
