@@ -11,7 +11,13 @@ class AddProject extends StatefulWidget {
 class _AddProjectState extends State<AddProject> {
   final _addProjectKey = GlobalKey<FormState>();
   int grpValue;
-  String _projectTitle,_projectDescription,_clientName,_projectArea,_projectCity,_phone,_pincode;
+  String _projectTitle,
+      _projectDescription,
+      _clientName,
+      _projectArea,
+      _projectCity,
+      _phone,
+      _pincode;
 
   File _imageFile;
 
@@ -93,6 +99,47 @@ class _AddProjectState extends State<AddProject> {
         });
   }
 
+  //------------------------Gender Select----------------------------------------------------------
+  var _isMale = true;
+
+  Widget _buildGenderSelect({String gender, bool selected}) {
+    var button = selected
+        ? buildContainerGenderSelect(
+            gender: gender, textColor: Colors.black54, background: Colors.white)
+        : buildContainerGenderSelect(
+            gender: gender,
+            textColor: Colors.black54,
+            background: Colors.deepPurple);
+
+    return GestureDetector(
+      child: button,
+      onTap: () {
+        setState(() {
+          _isMale = !_isMale;
+        });
+      },
+    );
+  }
+
+  Container buildContainerGenderSelect(
+      {String gender, Color background, Color textColor = Colors.black}) {
+    return Container(
+      height: 50,
+      width: 50,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(75.0), color: background),
+      child: Center(
+          child: Text(
+        gender,
+        style: TextStyle(
+            color: textColor,
+            textBaseline: TextBaseline.alphabetic,
+            fontSize: 25.0),
+      )),
+    );
+  }
+//---------------------------------------------------------------------------------
+
   void gender(int g) {
     setState(() {
       if (g == 1) {
@@ -115,16 +162,12 @@ class _AddProjectState extends State<AddProject> {
         // ),
         Container(
           child: Expanded(
-            
             flex: 1,
             child: Container(
               // margin: EdgeInsets.only(left: 1.0),
               child: RadioListTile(
-                
                 activeColor: Colors.deepPurple,
-                
                 title: Text(
-                  
                   'Male',
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
@@ -163,17 +206,20 @@ class _AddProjectState extends State<AddProject> {
           'Add Project',
           style: TextStyle(letterSpacing: 2.0),
         ),
-        leading: Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: GestureDetector(
-            onTap: () {
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.done),
+            onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Icon(
-              Icons.arrow_back_ios,
-            ),
-          ),
-        ),
+          )
+        ],
       ),
       body: ListView(
         children: <Widget>[
@@ -279,11 +325,11 @@ class _AddProjectState extends State<AddProject> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    onSaved: (projectTitle)=>_projectTitle=projectTitle,
-                    validator: (projectTitle){
-                      if(projectTitle.isEmpty){
+                    onSaved: (projectTitle) => _projectTitle = projectTitle,
+                    validator: (projectTitle) {
+                      if (projectTitle.isEmpty) {
                         return "Title required";
-                      }else if(projectTitle.length>20){
+                      } else if (projectTitle.length > 20) {
                         return "Title must be 20+ char";
                       }
                     },
@@ -291,11 +337,12 @@ class _AddProjectState extends State<AddProject> {
                         labelText: 'Title', hintText: 'eg: Gong'),
                   ),
                   TextFormField(
-                    onSaved: (projectDescription)=>_projectDescription=projectDescription,
-                    validator: (projectDescription){
-                      if(projectDescription.isEmpty){
+                    onSaved: (projectDescription) =>
+                        _projectDescription = projectDescription,
+                    validator: (projectDescription) {
+                      if (projectDescription.isEmpty) {
                         return "Description required";
-                      }else if(projectDescription.length<10){
+                      } else if (projectDescription.length < 10) {
                         return "must be 10+ char";
                       }
                     },
@@ -305,22 +352,47 @@ class _AddProjectState extends State<AddProject> {
                     ),
                   ),
                   TextFormField(
-                    onSaved: (clientName)=>_clientName=clientName,
-                    validator: (clientName){
-                      if(clientName.isEmpty){
+                    onSaved: (clientName) => _clientName = clientName,
+                    validator: (clientName) {
+                      if (clientName.isEmpty) {
                         return "Description required";
                       }
                     },
                     decoration: InputDecoration(
                         labelText: 'Client Name', hintText: 'eg: John'),
                   ),
-                  buildSelectGender(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Center(
+                            child: Text(
+                          'Sex',
+                          style:
+                              TextStyle(color: Colors.black54, fontSize: 18.0),
+                        )),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            _buildGenderSelect(gender: "M", selected: _isMale),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            _buildGenderSelect(gender: "F", selected: !_isMale),
+                          ])
+                    ],
+                  ),
+                  // buildSelectGender(),
                   TextFormField(
-                    onSaved: (phone)=>_phone= phone,
-                    validator: (phone){
-                      if(phone.isEmpty){
+                    onSaved: (phone) => _phone = phone,
+                    validator: (phone) {
+                      if (phone.isEmpty) {
                         return "Phno required";
-                      }else if(phone.length<10){
+                      } else if (phone.length < 10) {
                         return "Phno cannot be less than 10";
                       }
                     },
@@ -330,9 +402,9 @@ class _AddProjectState extends State<AddProject> {
                         labelText: 'Phno', hintText: 'eg: XXX-XXX-XXXX'),
                   ),
                   TextFormField(
-                    onSaved: (area)=>_projectArea= area,
-                    validator: (area){
-                      if(area.isEmpty){
+                    onSaved: (area) => _projectArea = area,
+                    validator: (area) {
+                      if (area.isEmpty) {
                         return "Area required";
                       }
                     },
@@ -340,9 +412,9 @@ class _AddProjectState extends State<AddProject> {
                         labelText: 'Area', hintText: 'eg: Time Street'),
                   ),
                   TextFormField(
-                    onSaved: (city)=>_projectCity= city,
-                    validator: (city){
-                      if(city.isEmpty){
+                    onSaved: (city) => _projectCity = city,
+                    validator: (city) {
+                      if (city.isEmpty) {
                         return "city required";
                       }
                     },
@@ -350,11 +422,11 @@ class _AddProjectState extends State<AddProject> {
                         labelText: 'City', hintText: 'eg: Bangalore'),
                   ),
                   TextFormField(
-                    onSaved: (pincode)=>_pincode= pincode,
-                    validator: (pincode){
-                      if(pincode.isEmpty){
+                    onSaved: (pincode) => _pincode = pincode,
+                    validator: (pincode) {
+                      if (pincode.isEmpty) {
                         return "pincode required";
-                      }else if(pincode.length<6){
+                      } else if (pincode.length < 6) {
                         return "must be 6 char";
                       }
                     },
@@ -363,24 +435,27 @@ class _AddProjectState extends State<AddProject> {
                     decoration: InputDecoration(
                         labelText: 'pincode', hintText: 'eg: XXX-XXX'),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
-                    width: double.infinity,
-                    child: RaisedButton(
-                        elevation: 0.0,
-                        color: Colors.deepPurple,
-                        onPressed: () {
-                          if(_addProjectKey.currentState.validate()){
-                            _addProjectKey.currentState.save();
-                            Navigator.of(context).pop();
-                          }
-                          
-                        },
-                        child: Text(
-                          'Add Project',
-                          style: TextStyle(color: Colors.white),
-                        )),
+                  SizedBox(
+                    height: 10.0,
                   )
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 10.0),
+                  //   width: double.infinity,
+                  //   child: RaisedButton(
+                  //       elevation: 0.0,
+                  //       color: Colors.deepPurple,
+                  //       onPressed: () {
+                  //         if(_addProjectKey.currentState.validate()){
+                  //           _addProjectKey.currentState.save();
+                  //           Navigator.of(context).pop();
+                  //         }
+
+                  //       },
+                  //       child: Text(
+                  //         'Add Project',
+                  //         style: TextStyle(color: Colors.white),
+                  //       )),
+                  // )
                 ],
               ),
             ),

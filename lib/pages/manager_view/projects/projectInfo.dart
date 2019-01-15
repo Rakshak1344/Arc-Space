@@ -53,7 +53,9 @@ class _InfoPageState extends State<InfoPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed('/addProject');
+            },
           )
         ],
         elevation: 0.0,
@@ -144,7 +146,7 @@ class _InfoPageState extends State<InfoPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     color: Colors.white),
-                height: MediaQuery.of(context).size.height / 3.0,
+                height: MediaQuery.of(context).size.height / 2.5,
                 width: double.infinity,
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),

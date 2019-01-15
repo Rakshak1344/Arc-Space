@@ -1,78 +1,93 @@
 import 'package:flutter/material.dart';
-import 'package:login/pages/manager_view/twoPanels.dart';
+import 'package:login/pages/manager_view/projects/projectLevelAppDrawer.dart';
+import 'package:login/pages/manager_view/projects/twoPanels.dart';
 
 class ManageProjects extends StatefulWidget {
   @override
   _ManageProjectsState createState() => _ManageProjectsState();
 }
 
-class _ManageProjectsState extends State<ManageProjects> with SingleTickerProviderStateMixin{
-  
+class _ManageProjectsState extends State<ManageProjects>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    controller = new AnimationController(vsync: this, duration:Duration(milliseconds: 500),value: 5.0);
+    controller = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 500), value: 5.0);
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     controller.dispose();
   }
-  bool get isPanelVisible{
+
+  bool get isPanelVisible {
     final AnimationStatus status = controller.status;
-    return status == AnimationStatus.completed || status == AnimationStatus.forward;
+    return status == AnimationStatus.completed ||
+        status == AnimationStatus.forward;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Manage Projects'),
-        elevation: 0.0,
-        leading: IconButton(
-          onPressed: (){
-            controller.fling(velocity: isPanelVisible?-1.0:1.0);
-          },
-          icon: AnimatedIcon(
-            icon: AnimatedIcons.home_menu,
-            progress: controller.view,
-          ),
+        backgroundColor: Colors.deepPurple,
+        drawer: ProjectLevelAppDrawer(),
+        appBar: AppBar(
+          title: Text('Manage Projects'),
+          elevation: 0.0,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+            )
+          ],
+          // leading: IconButton(
+          //   onPressed: (){
+          //     controller.fling(velocity: isPanelVisible?-1.0:1.0);
+          //   },
+          //   icon: AnimatedIcon(
+          //     icon: AnimatedIcons.home_menu,
+          //     progress: controller.view,
+          //   ),
+          // ),
         ),
-      ),
-      body: TwoPanels(controller: controller),
-    );
+        // body: TwoPanels(controller: controller),
+        body: Container(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.all(10.0),
+                  // margin: EdgeInsets.only(bottom: 20.0),
+                  // color: theme.primaryColor,
+                  child: ListView(children: <Widget>[
+                    CardProject(
+                      projectImage: 'assets/project1.jpg',
+                      projectAddress: '6th Avenu Circle Street',
+                      projectTitle: 'Street Phase Mansion',
+                    ),
+                    CardProject(
+                      projectImage: 'assets/project2.jpg',
+                      projectAddress: '4th Avenu Square Street',
+                      projectTitle: 'Square Street',
+                    ),
+                    CardProject(
+                      projectImage: 'assets/room.jpg',
+                      projectAddress: '14th Avenu cross Street',
+                      projectTitle: 'Room Phase',
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    )
+                  ])),
+              // positionedTransitionManagerSpace(constraints, context)
+            ],
+          ),
+        ));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,23 +122,23 @@ class _ManageProjectsState extends State<ManageProjects> with SingleTickerProvid
 //           ),
 //         ),
 //         child: Scaffold(
-          
+
 //             // backgroundColor: Colors.lightBlue,
 //             // appBar: AppBar(
-              
+
 //             //   title: Text('Manage Projects'),
 //             //   titleSpacing: 25.0,
 //             //   elevation: 0.0,
 //             //   backgroundColor: Colors.transparent,
 //             // ),
 //             body: callPage(_currentIndex),
-            
+
 //             bottomNavigationBar: BottomNavigationBar(
 //               fixedColor: Colors.deepPurple,
 //               type: BottomNavigationBarType.fixed,
 //               currentIndex: _currentIndex,
 //               onTap: (value) {
-                
+
 //                 setState(() {
 //                   _currentIndex = value;
 //                 });
@@ -149,10 +164,9 @@ class _ManageProjectsState extends State<ManageProjects> with SingleTickerProvid
 //                     title: Text('Cancel Project')),
 //               ],
 //             ),
-            
+
 //             ),
 //       ),
 //     );
 //   }
 // }
-

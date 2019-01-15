@@ -65,7 +65,7 @@ class _RegisterACompanyState extends State<RegisterACompany> {
       children: <Widget>[
         Container(
           child: Expanded(
-            // flex: 1,
+            
             child: Padding(
               padding: const EdgeInsets.only(left:20.0),
               child: RadioListTile(
