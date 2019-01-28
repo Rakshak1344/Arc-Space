@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/pages/login_and_SignUp_pages/dialogForgotPassword.dart';
 
 class EmployeeLoginPage extends StatefulWidget {
   @override
@@ -57,13 +58,11 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
       keyboardType: TextInputType.number,
       maxLength: 6,
       onSaved: (passwordInput) => _password = passwordInput,
-      
       validator: (passwordInput) {
         if (passwordInput.isEmpty) {
           return 'Password Invalid';
         }
       },
-
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: '********',
@@ -100,17 +99,16 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
             'Forgot Password?',
             style: TextStyle(color: Colors.black, fontSize: 12.0),
           ),
-          // onPressed: (){
-          //   setState(() {
-          //           return buildForgotPasswordDialog(context);
-          //               });
-          onPressed: () {
-            setState(() {
-              Navigator.of(context).pushNamed('/forgotPassword');
-            });
+          onPressed: () async {
+            final action = await Dialogs.yesSubmitDialog(
+                context, 'Forgot Password?', 'Email/Phone');
+            if (action == ForgotPasswordDialogAction.submit) {
+              Navigator.of(context).canPop();
+            } else {
+              Navigator.of(context).canPop();
+            }
           },
         ),
-        // child: Text('Forgot Password?',style: TextStyle(color: Colors.grey,fontSize: 12.0),),
       ),
     );
   }
@@ -129,6 +127,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
             }
           },
           color: Colors.grey[900],
+          splashColor: Colors.deepPurple,
           child:
               Text('LOGIN', style: Theme.of(context).primaryTextTheme.button),
           shape:
@@ -232,30 +231,42 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
         child: ListView(
           // padding: const EdgeInsets.all(20.0),
           padding: const EdgeInsets.fromLTRB(22.0, 0.0, 22.0, 22.0),
-
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
-            // SizedBox(height: kToolbarHeight),
             SizedBox(height: kToolbarHeight),
+            FlatButton.icon(
+              color: Colors.deepPurple,
+              splashColor: Colors.grey[900],
+              icon: Icon(
+                Icons.arrow_back,
+                size: 30.0,
+                color: Colors.white,
+              ),
+              label: Text(
+                'Tap to select profile',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
             buildTitle(),
             buildTitleLine(),
             SizedBox(
               height: 10.0,
             ),
             buildEmailTextField(),
-            SizedBox(
-              height: 20.0,
-            ),
             buildPasswordTextField(),
-
             // buildCheckboxKeepMeLoggedIn(),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             buildLoginButton(context),
             buildForgotPasswordText(),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
+           
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
@@ -265,7 +276,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             buildOrText(),
             SizedBox(
@@ -282,7 +293,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
               ],
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -293,7 +304,7 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             buildContactManagerForCredentials(),
             // buildDontHaveAnAccount(),
@@ -308,10 +319,8 @@ class _EmployeeLoginPageState extends State<EmployeeLoginPage> {
 
   Container buildCheckboxKeepMeLoggedIn() {
     return Container(
-      margin: EdgeInsets.only(left: 25.0,right: 90.0),
-      
-      child:CheckboxListTile(
-        
+      margin: EdgeInsets.only(left: 25.0, right: 90.0),
+      child: CheckboxListTile(
         activeColor: Colors.blue,
         value: _isChecked,
         onChanged: (v) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/pages/manager_view/searchBar.dart';
 
 class RemovedOrRetired extends StatefulWidget {
   @override
@@ -55,7 +56,9 @@ class _RemovedOrRetiredState extends State<RemovedOrRetired> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context,delegate: DataSearch());
+            },
           )
         ],
       ),

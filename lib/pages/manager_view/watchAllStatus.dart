@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/pages/manager_view/searchBar.dart';
 
 class WatchAllStatus extends StatefulWidget {
   @override
@@ -25,7 +26,9 @@ class _WatchAllStatusState extends State<WatchAllStatus> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              // showSearch(context: context,delegate: DataSearch());
+            },
           )
         ],
       ),
@@ -92,6 +95,8 @@ class _WatchAllStatusState extends State<WatchAllStatus> {
                   imageAsset: 'assets/desk1.jpg',
                   name: 'Pawan',
                   designation: 'Planner'),
+              Divider(),
+              
             
               SizedBox(height: 10.0,),
             ],
@@ -127,3 +132,5 @@ class _WatchAllStatusState extends State<WatchAllStatus> {
     );
   }
 }
+
+

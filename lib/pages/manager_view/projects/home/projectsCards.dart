@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:login/pages/manager_view/projects/projectLevelAppDrawer.dart';
-import 'package:login/pages/manager_view/projects/twoPanels.dart';
+import 'package:login/pages/manager_view/projects/home/card.dart';
+import 'package:login/pages/manager_view/projects/home/projectLevelAppDrawer.dart';
+
+
 
 class ManageProjects extends StatefulWidget {
   @override
   _ManageProjectsState createState() => _ManageProjectsState();
 }
 
-class _ManageProjectsState extends State<ManageProjects>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
+class _ManageProjectsState extends State<ManageProjects> {
+  //add if needed with SingleTickerProviderStateMixin
+  // AnimationController controller;
 
-  @override
-  void initState() {
-    super.initState();
-    controller = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500), value: 5.0);
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   controller = new AnimationController(
+  //       vsync: this, duration: Duration(milliseconds: 500), value: 5.0);
+  // }
 
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   controller.dispose();
+  // }
 
-  bool get isPanelVisible {
-    final AnimationStatus status = controller.status;
-    return status == AnimationStatus.completed ||
-        status == AnimationStatus.forward;
-  }
+  // bool get isPanelVisible {
+  //   final AnimationStatus status = controller.status;
+  //   return status == AnimationStatus.completed ||
+  //       status == AnimationStatus.forward;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +90,6 @@ class _ManageProjectsState extends State<ManageProjects>
         ));
   }
 }
-
-
 
 // class _ManageProjectsState extends State<ManageProjects> {
 //   int _currentIndex = 0;

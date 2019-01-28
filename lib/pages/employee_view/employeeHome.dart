@@ -22,7 +22,6 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
               decoration: BoxDecoration(
                 color: Colors.blueGrey,
                 border: Border.all(color: Colors.white,width: 3.0)
-                // shape: BoxShape.rectangle,
               ),
             ),
           

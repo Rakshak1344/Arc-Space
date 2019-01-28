@@ -32,40 +32,22 @@ class _ProjectLevelAppDrawerState extends State<ProjectLevelAppDrawer> {
                 splashColor: Colors.grey,
               ),
             ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Center(child: buildCircleAvatar()),
+            buildMenuItem(
+                icon: Icons.add, title: 'Add Project', route: '/addProject'),
             Divider(),
-            buildMenuItem(icon: Icons.add, title: 'Add Project', route: '/addProject'),
+            buildMenuItem(
+                icon: Icons.done, title: 'Completed Project', route: ''),
             Divider(),
-            buildMenuItem(icon: Icons.close, title: 'Cancel Project',route: ''),
+            buildMenuItem(
+                icon: Icons.close, title: 'Canceled Project', route: ''),
             Divider(),
-            buildMenuItem(icon: Icons.color_lens, title: 'Sketch',route: '/sketchPad'),
-            Divider(),
-            buildMenuItem(icon: Icons.settings, title: 'Settings',route: ''),
+            buildMenuItem(
+                icon: Icons.color_lens, title: 'Sketch', route: '/sketchPad'),
+            // Divider(),
+            // buildMenuItem(icon: Icons.settings, title: 'Settings', route: ''),
           ],
         ),
       ),
-    );
-  }
-
-  Column buildCircleAvatar() {
-    return Column(
-      children: <Widget>[
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/tom.jpg'),
-          radius: 50.0,
-        ),
-        SizedBox(
-          height: 10.0,
-        ),
-        Text(
-          'Tom',
-          style:
-              TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.w500),
-        )
-      ],
     );
   }
 

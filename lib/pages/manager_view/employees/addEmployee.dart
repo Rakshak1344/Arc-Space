@@ -382,18 +382,6 @@ class _AddEmployeeState extends State<AddEmployee> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  // TextFormField(
-                  //   onSaved: (projectTitle) => _projectTitle = projectTitle,
-                  //   validator: (projectTitle) {
-                  //     if (projectTitle.isEmpty) {
-                  //       return "Title required";
-                  //     } else if (projectTitle.length > 20) {
-                  //       return "Title must be 20+ char";
-                  //     }
-                  //   },
-                  //   decoration: InputDecoration(
-                  //       labelText: 'Title', hintText: 'eg: Gong'),
-                  // ),
                 ],
               ),
             ),

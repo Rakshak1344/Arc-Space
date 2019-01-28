@@ -14,9 +14,13 @@ class _AddProjectState extends State<AddProject> {
   String _projectTitle,
       _projectDescription,
       _clientName,
+      _clientPhone,
+       _sitePhone,
+       _siteSecurityPhno,
       _projectArea,
       _projectCity,
-      _phone,
+      
+     
       _pincode;
 
   File _imageFile;
@@ -296,25 +300,7 @@ class _AddProjectState extends State<AddProject> {
                     ],
                   ),
                 ),
-                // Align(
-                //   alignment: Alignment.bottomRight,
-                //   child: Container(
-                //     margin: EdgeInsets.only(right: 30.0),
-                //     child: GestureDetector(
-                //       onTap: () {
-                //         getImage();
-                //       },
-                //       child: Padding(
-                //         padding: const EdgeInsets.only(top: 230.0),
-                //         child: Icon(
-                //           Icons.add_a_photo,
-                //           color: Colors.white,
-                //           size: 30.0,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                
               ],
             ),
           ),
@@ -362,7 +348,7 @@ class _AddProjectState extends State<AddProject> {
                         labelText: 'Client Name', hintText: 'eg: John'),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 15.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -388,7 +374,7 @@ class _AddProjectState extends State<AddProject> {
                   ),
                   // buildSelectGender(),
                   TextFormField(
-                    onSaved: (phone) => _phone = phone,
+                    onSaved: (phone) => _clientPhone = phone,
                     validator: (phone) {
                       if (phone.isEmpty) {
                         return "Phno required";
@@ -399,7 +385,31 @@ class _AddProjectState extends State<AddProject> {
                     keyboardType: TextInputType.number,
                     maxLength: 10,
                     decoration: InputDecoration(
-                        labelText: 'Phno', hintText: 'eg: XXX-XXX-XXXX'),
+                        labelText: 'Client Phone', hintText: 'eg: XXX-XXX-XXXX'),
+                  ),
+                   TextFormField(
+                    onSaved: (siteSecurity) => _siteSecurityPhno = siteSecurity,
+                    validator: (siteSecurity) {
+                      if (siteSecurity.isEmpty) {
+                        return "Phno required";
+                      }
+                    },
+                    decoration: InputDecoration(
+                        labelText: 'Site Security Name', hintText: 'eg: John'),
+                  ),
+                  TextFormField(
+                    onSaved: (phone) => _sitePhone = phone,
+                    validator: (phone) {
+                      if (phone.isEmpty) {
+                        return "Phno required";
+                      } else if (phone.length < 10) {
+                        return "Phno cannot be less than 10";
+                      }
+                    },
+                    keyboardType: TextInputType.number,
+                    maxLength: 10,
+                    decoration: InputDecoration(
+                        labelText: 'Site Phone', hintText: 'eg: XXX-XXX-XXXX'),
                   ),
                   TextFormField(
                     onSaved: (area) => _projectArea = area,

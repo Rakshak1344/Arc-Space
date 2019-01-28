@@ -193,10 +193,12 @@ class _WelcomeState extends State<Welcome> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
-          'Select  Profile',
+          'Select Profile',
           style: TextStyle(
             color: Colors.black,
             fontSize: 32.0,
+            // fontFamily: 'Megrim',
+            // fontWeight: FontWeight.bold,
             letterSpacing: 4.0,
             // fontWeight: FontWeight.bold
           ),

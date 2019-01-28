@@ -61,7 +61,7 @@ class _EmployeeViewState extends State<EmployeeView> {
               buildSelectContainer(
                 nameSelect: 'My Employees',
                 color: Colors.blue,
-                icon: Icon(Icons.group),
+                icon: Icon(Icons.group,color: Colors.white,),
                 route: '/existingEmployee',
               ),
               SizedBox(
@@ -70,7 +70,7 @@ class _EmployeeViewState extends State<EmployeeView> {
               buildSelectContainer(
                   nameSelect: 'Add Employee',
                   color: Colors.green,
-                  icon: Icon(Icons.person_add),
+                  icon: Icon(Icons.person_add,color: Colors.white,),
                   route: '/addEmployee'),
               SizedBox(
                 height: 10.0,
@@ -78,7 +78,7 @@ class _EmployeeViewState extends State<EmployeeView> {
               buildSelectContainer(
                   nameSelect: 'Ex-Employees',
                   color: Colors.red,
-                  icon: Icon(Icons.remove_circle_outline),
+                  icon: Icon(Icons.remove_circle_outline,color: Colors.white,),
                   route: '/exEmployees'),
             ],
           )),

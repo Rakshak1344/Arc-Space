@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:login/pages/login_and_SignUp_pages/dialogForgotPassword.dart';
 
 class ManagerLoginPage extends StatefulWidget {
   @override
@@ -13,8 +13,6 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
   bool _isChecked = false;
   bool _isObscured = true;
   Color _eyeButtonColor = Colors.grey;
-
-
 
   Padding buildTitle() {
     return Padding(
@@ -49,7 +47,9 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         }
       },
       decoration: InputDecoration(
-          labelText: 'Email / MID', hintText: 'xyz@mail.com / M14',icon: Icon(Icons.alternate_email)),
+          labelText: 'Email / MID',
+          hintText: 'xyz@mail.com / M14',
+          icon: Icon(Icons.alternate_email)),
     );
   }
 
@@ -67,7 +67,6 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         icon: Icon(Icons.lock_open),
         labelText: 'Password',
         hintText: '********',
-        
         suffixIcon: IconButton(
             icon: Icon(Icons.remove_red_eye, color: _eyeButtonColor),
             onPressed: () {
@@ -99,13 +98,16 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
             style: TextStyle(color: Colors.black, fontSize: 12.0),
           ),
           // onPressed: _showModalSheet,
-          onPressed: () {
-            setState(() {
-              Navigator.of(context).pushNamed('/forgotPassword');
-            });
+          onPressed: () async {
+            final action = await Dialogs.yesSubmitDialog(
+                context, 'Forgot Password?', 'Email/Phone');
+            if (action == ForgotPasswordDialogAction.submit) {
+              Navigator.of(context).canPop();
+            } else {
+              Navigator.of(context).canPop();
+            }
           },
         ),
-        // child: Text('Forgot Password?',style: TextStyle(color: Colors.grey,fontSize: 12.0),),
       ),
     );
   }
@@ -122,9 +124,9 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
               //TODO: Check Values and navigate to new Page
               Navigator.of(context).pushNamed('/managerHomePage');
             }
-            
           },
           color: Colors.grey[900],
+          splashColor: Colors.deepPurple,
           child:
               Text('LOGIN', style: Theme.of(context).primaryTextTheme.button),
           shape:
@@ -201,7 +203,6 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
               'SIGNUP A COMPANY',
               style: TextStyle(
                   color: Colors.black87, letterSpacing: 1.0, fontSize: 12.0),
-                  
             ),
             onPressed: () {
               Navigator.of(context).pushNamed('/registerCompany');
@@ -213,19 +214,18 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
 
   Container buildCheckboxKeepMeLoggedIn() {
     return Container(
-      margin: EdgeInsets.only(left: 25.0,right: 90.0),
+      margin: EdgeInsets.only(left: 25.0, right: 90.0),
       child: CheckboxListTile(
-              activeColor: Colors.blue,
-              
-              value: _isChecked,
-              onChanged: (v) {
-                setState(() {
-                  _isChecked = !_isChecked;
-                });
-              },
-              title: Text('Keep me logged In'),
-              subtitle: Text('As Manager'),
-            ),
+        activeColor: Colors.blue,
+        value: _isChecked,
+        onChanged: (v) {
+          setState(() {
+            _isChecked = !_isChecked;
+          });
+        },
+        title: Text('Keep me logged In'),
+        subtitle: Text('As Manager'),
+      ),
     );
   }
 
@@ -240,30 +240,36 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
         child: ListView(
           // padding: const EdgeInsets.all(20.0),
           padding: const EdgeInsets.fromLTRB(22.0, 0.0, 22.0, 22.0),
-
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
-            // SizedBox(height: kToolbarHeight),
+            
             SizedBox(height: kToolbarHeight),
+          
+            FlatButton.icon(
+              color: Colors.deepPurple,
+              splashColor: Colors.grey[900],
+              icon: Icon(Icons.arrow_back,size: 30.0,color: Colors.white,),
+              label: Text('Tap to select profile',style: TextStyle(color: Colors.white),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            SizedBox(height: 15.0,),
             buildTitle(),
             buildTitleLine(),
             SizedBox(
               height: 10.0,
             ),
             buildEmailTextField(),
-            SizedBox(
-              height: 20.0,
-            ),
             buildPasswordTextField(),
-            
+
             // buildCheckboxKeepMeLoggedIn(),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             buildLoginButton(context),
             buildForgotPasswordText(),
-            // SizedBox(
-            //   height: 10.0,
-            // ),
+            
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
@@ -273,7 +279,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             buildOrText(),
             SizedBox(
@@ -285,12 +291,12 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                 buildSocialMediaButtons(Icons.email, Colors.red),
                 SizedBox(width: 16.0),
                 buildSocialMediaButtons(Icons.phone, Colors.green),
-                // SizedBox(width: 16.0),
-                // buildSocialMediaButtons(Icons.person, Colors.yellow),
+                SizedBox(width: 16.0),
+                buildSocialMediaButtons(Icons.person, Colors.yellow),
               ],
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -301,7 +307,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             buildDontHaveAnAccount(),
             buildSignUpFlatButton(),

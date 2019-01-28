@@ -9,7 +9,7 @@ class _PaintPageState extends State<PaintPage> {
   List<Offset> _points = <Offset>[];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(        
       body: Container(
         child: GestureDetector(
           onPanUpdate: (DragUpdateDetails details) {
@@ -26,7 +26,10 @@ class _PaintPageState extends State<PaintPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.clear),onPressed: ()=>_points.clear(),),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.clear),
+        onPressed: () => _points.clear(),
+      ),
     );
   }
 }

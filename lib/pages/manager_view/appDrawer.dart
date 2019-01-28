@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/pages/manager_view/dialog.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -6,6 +7,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  bool tappedYes = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,9 +22,6 @@ class _AppDrawerState extends State<AppDrawer> {
                   Icons.power_settings_new,
                   color: Colors.red,
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/home');
-                },
                 label: Text('Logout',
                     style: TextStyle(
                         letterSpacing: 1.0,
@@ -30,29 +29,46 @@ class _AppDrawerState extends State<AppDrawer> {
                         fontSize: 16.0,
                         color: Colors.black)),
                 splashColor: Colors.grey,
+                onPressed: () async {
+                  final action = await Dialogs.yesAbortDialog(
+                      context, 'Logout', 'Are You Sure?');
+                  if (action == DialogAction.yes) {
+                    setState(() {
+                      Navigator.of(context).pushNamed('/home');
+                    });
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
               ),
             ),
             SizedBox(
               height: 20.0,
             ),
-            Center(
-                child: Column(
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/tom.jpg'),
-                  radius: 50.0,
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  'Tom',
-                  style: TextStyle(
-                      color: Colors.deepPurple, fontWeight: FontWeight.w500),
-                )
-              ],
-            )),
-            Divider(),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).popAndPushNamed('/managerProfile');
+              },
+              splashColor: Colors.deepPurple,
+              child: Center(
+                  child: Column(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/tom.jpg'),
+                    radius: 50.0,
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    'Tom',
+                    style: TextStyle(
+                        color: Colors.deepOrange, fontWeight: FontWeight.w500),
+                  ),
+                ],
+              )),
+            ),
+            // Divider(),
             buildMenuItem(icon: Icons.settings, title: 'Settings'),
             Divider(),
             buildMenuItem(
@@ -60,7 +76,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 title: 'Sketch Pad',
                 route: '/sketchPad'),
             Divider(),
-            buildMenuItem(icon: Icons.close, title: 'Close'),
+            buildMenuItem(icon: Icons.close, title: 'Close',route: null),
             Divider(),
           ],
         ),

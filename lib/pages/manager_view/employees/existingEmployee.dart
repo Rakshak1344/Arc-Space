@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/pages/manager_view/searchBar.dart';
 
 class ExistingEmployee extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _ExistingEmployeeState extends State<ExistingEmployee> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
+           
             setState(() {
               Navigator.of(context).pop();
 
@@ -24,7 +26,9 @@ class _ExistingEmployeeState extends State<ExistingEmployee> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+               showSearch(context: context,delegate: DataSearch());
+            },
           )
         ],
       ),
