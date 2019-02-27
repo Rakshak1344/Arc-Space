@@ -17,9 +17,11 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
   Padding buildTitle() {
     return Padding(
       padding: const EdgeInsets.all(1.0),
-      child: Text(
-        'M-Login',
-        style: TextStyle(fontSize: 42.0),
+      child: Center(
+              child: Text(
+          'Manager Login',
+          style: TextStyle(fontSize: 32.0),
+        ),
       ),
     );
   }
@@ -30,7 +32,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
       child: Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          width: 32.0,
+          width: double.infinity,
           height: 1.5,
           color: Colors.black,
         ),
@@ -125,8 +127,8 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
               Navigator.of(context).pushNamed('/managerHomePage');
             }
           },
-          color: Colors.grey[900],
-          splashColor: Colors.deepPurple,
+          splashColor: Colors.grey[900],
+          color: Colors.deepPurple,
           child:
               Text('LOGIN', style: Theme.of(context).primaryTextTheme.button),
           shape:
@@ -232,6 +234,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
         body: Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(),
@@ -258,9 +261,12 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
             buildTitle(),
             buildTitleLine(),
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             buildEmailTextField(),
+            SizedBox(
+              height: 10.0,
+            ),
             buildPasswordTextField(),
 
             // buildCheckboxKeepMeLoggedIn(),

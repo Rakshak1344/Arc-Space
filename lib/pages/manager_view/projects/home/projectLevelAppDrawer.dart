@@ -9,40 +9,38 @@ class _ProjectLevelAppDrawerState extends State<ProjectLevelAppDrawer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 110,
       child: Drawer(
         child: ListView(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: FlatButton.icon(
-                icon: Icon(
+            Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.deepPurple,width: 2.0),
+                borderRadius: BorderRadius.circular(10.0)
+              ),
+              child: FlatButton(
+                child: Icon(
                   Icons.home,
                   color: Colors.red,
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/managerHomePage');
                 },
-                label: Text('Home',
-                    style: TextStyle(
-                        letterSpacing: 1.0,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.0,
-                        color: Colors.black)),
                 splashColor: Colors.grey,
               ),
             ),
             buildMenuItem(
-                icon: Icons.add, title: 'Add Project', route: '/addProject'),
+                icon: Icons.add,iconColor: Colors.blue, title: 'Add Project', route: '/addProject'),
             Divider(),
             buildMenuItem(
-                icon: Icons.done, title: 'Completed Project', route: ''),
+                icon: Icons.done,iconColor: Colors.green, title: 'Completed', route: ''),
             Divider(),
             buildMenuItem(
-                icon: Icons.close, title: 'Canceled Project', route: ''),
+                icon: Icons.close,iconColor: Colors.red, title: 'Canceled', route: ''),
             Divider(),
             buildMenuItem(
-                icon: Icons.color_lens, title: 'Sketch', route: '/sketchPad'),
+                icon: Icons.color_lens,iconColor: Colors.teal, title: 'Sketch', route: '/sketchPad'),
             // Divider(),
             // buildMenuItem(icon: Icons.settings, title: 'Settings', route: ''),
           ],
@@ -54,7 +52,8 @@ class _ProjectLevelAppDrawerState extends State<ProjectLevelAppDrawer> {
   Opacity buildMenuItem(
       {IconData icon,
       String title,
-      Color color = Colors.black,
+      Color iconColor = Colors.black,
+      Color textColor = Colors.black,
       double opacity = 1.0,
       String route}) {
     return Opacity(
@@ -69,7 +68,7 @@ class _ProjectLevelAppDrawerState extends State<ProjectLevelAppDrawer> {
               icon: Icon(icon),
               iconSize: 50.0,
               splashColor: Colors.deepPurple,
-              color: Colors.grey,
+              color: iconColor,
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.pushNamed(context, route);
@@ -83,7 +82,7 @@ class _ProjectLevelAppDrawerState extends State<ProjectLevelAppDrawer> {
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 14.0,
-                  color: Colors.grey),
+                  color: textColor),
             ),
             SizedBox(
               height: 10.0,

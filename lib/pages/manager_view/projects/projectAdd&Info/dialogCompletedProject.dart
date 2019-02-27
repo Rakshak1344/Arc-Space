@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 enum CompletedDialogAction { submit, cancel }
 
-class Dialogs {
+class DialogCompleted {
   static Future<CompletedDialogAction> deleteCancelAction(
       BuildContext context, String title, String body) async {
     final action = await showDialog(
@@ -19,6 +19,7 @@ class Dialogs {
               height: MediaQuery.of(context).size.height / 5,
               child: Column(children: <Widget>[
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                       labelText: body,
                       border: OutlineInputBorder(

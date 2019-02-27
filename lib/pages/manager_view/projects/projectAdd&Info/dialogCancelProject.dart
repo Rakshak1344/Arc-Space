@@ -17,6 +17,7 @@ class DialogCancel {
               height: MediaQuery.of(context).size.height / 2.5,
               child: Column(children: <Widget>[
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                       labelText: body,
                       border: OutlineInputBorder(

@@ -10,38 +10,37 @@ class _AppDrawerState extends State<AppDrawer> {
   bool tappedYes = false;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
+    return Container(
+      width: 110,
       child: Drawer(
         child: ListView(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: FlatButton.icon(
-                icon: Icon(
-                  Icons.power_settings_new,
-                  color: Colors.red,
-                ),
-                label: Text('Logout',
-                    style: TextStyle(
-                        letterSpacing: 1.0,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.0,
-                        color: Colors.black)),
-                splashColor: Colors.grey,
-                onPressed: () async {
-                  final action = await Dialogs.yesAbortDialog(
-                      context, 'Logout', 'Are You Sure?');
-                  if (action == DialogAction.yes) {
-                    setState(() {
-                      Navigator.of(context).pushNamed('/home');
-                    });
-                  } else {
-                    Navigator.of(context).pop();
-                  }
-                },
+            Container(
+              margin: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.deepPurple,width: 2.0),
+                borderRadius: BorderRadius.circular(10.0)
               ),
+              child: FlatButton(
+                  child: Icon(
+                    Icons.power_settings_new,
+                    color: Colors.red,
+                  ),
+                  onPressed: () async {
+                    final action = await Dialogs.yesAbortDialog(
+                        context, 'Logout', 'Are You Sure?');
+                    if (action == DialogAction.yes) {
+                      setState(() {
+                        Navigator.of(context).pushNamed('/home');
+                      });
+                    } else {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  splashColor: Colors.grey,
+                ),
             ),
+
             SizedBox(
               height: 20.0,
             ),
@@ -55,7 +54,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundImage: AssetImage('assets/tom.jpg'),
-                    radius: 50.0,
+                    radius: 35.0,
                   ),
                   SizedBox(
                     height: 10.0,
@@ -63,31 +62,47 @@ class _AppDrawerState extends State<AppDrawer> {
                   Text(
                     'Tom',
                     style: TextStyle(
-                        color: Colors.deepOrange, fontWeight: FontWeight.w500),
+                        color: Colors.red, fontWeight: FontWeight.w500),
                   ),
                 ],
               )),
             ),
-            // Divider(),
-            buildMenuItem(icon: Icons.settings, title: 'Settings'),
+            // divider(),
+            Divider(),
+            buildMenuItem(icon: Icons.settings,iconColor: Colors.blueGrey, title: 'Settings',route: '/settingsManager'),
             Divider(),
             buildMenuItem(
                 icon: Icons.color_lens,
+                iconColor: Colors.teal,
                 title: 'Sketch Pad',
                 route: '/sketchPad'),
+            // divider(),
             Divider(),
-            buildMenuItem(icon: Icons.close, title: 'Close',route: null),
-            Divider(),
+            
+            buildMenuItem(icon: Icons.close,iconColor: Colors.red, title: 'Close', route: null),
+            // Divider(),
           ],
         ),
       ),
     );
   }
 
+  // Container divider() {
+  //   return Container(
+  //           margin: EdgeInsets.only(right: 50.0,left: 50.0),
+  //           height: 2,
+          
+  //           decoration: BoxDecoration(
+  //             color: Colors.blueGrey
+  //           ),
+  //         );
+  // }
+
   Opacity buildMenuItem(
       {IconData icon,
       String title,
-      Color color = Colors.black,
+      Color iconColor = Colors.black,
+      Color iconTextColor = Colors.black,
       double opacity = 1.0,
       String route}) {
     return Opacity(
@@ -106,7 +121,7 @@ class _AppDrawerState extends State<AppDrawer> {
               splashColor: Colors.deepPurple,
               icon: Icon(icon),
               iconSize: 50.0,
-              color: Colors.grey,
+              color: iconColor,
             ),
             SizedBox(
               height: 10.0,
@@ -116,7 +131,7 @@ class _AppDrawerState extends State<AppDrawer> {
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 14.0,
-                  color: Colors.grey),
+                  color: iconTextColor),
             ),
             SizedBox(
               height: 10.0,

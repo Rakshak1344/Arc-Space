@@ -21,13 +21,20 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
         appBar: AppBar(
           // elevation: defaultTargetPlatform == TargetPlatform.android ? 5.0 : 0.0,
           elevation: 0.0,
+          backgroundColor: Colors.deepPurple,
           // titleSpacing: 10.0,
-
           title: Text(
             'Hi! Tom',
-            style: TextStyle(letterSpacing: 5.0),
+            style: TextStyle(wordSpacing: 5.0),
           ),
-          backgroundColor: Colors.deepPurple,
+          actions: <Widget>[
+            IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/notifyManager');
+              },
+              icon: Icon(Icons.notifications_active,color: Colors.white,),
+            ),
+          ],
         ),
         drawer: AppDrawer(),
         body: MainContent(),

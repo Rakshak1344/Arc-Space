@@ -33,8 +33,8 @@ class _WelcomePageState extends State<WelcomePage> {
                     aspectRatio: 100 / 55,
                     child: Container(
                       margin: EdgeInsets.only(top: 55.0),
-                      // height: MediaQuery.of(context).devicePixelRatio * 42,
-                      // width: double.infinity,
+                      height: MediaQuery.of(context).devicePixelRatio * 42,
+                      width: double.infinity,
                       alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(color: Colors.white70),
                     ),
@@ -58,6 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
               // color: Colors.deepOrange,
               height: MediaQuery.of(context).size.height / 4.5,
               width: double.infinity,
+              // padding: EdgeInsets.all(40.0),
               margin: EdgeInsets.all(10.0),
               child: Card(
                 elevation: 10.0,

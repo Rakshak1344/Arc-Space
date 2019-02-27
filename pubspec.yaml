@@ -21,6 +21,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   camera:
   image_picker:
+  flutter_slidable:
+  flip_card:
 
 dev_dependencies:
   flutter_test:

@@ -12,13 +12,19 @@ import 'package:login/pages/manager_view/employees/employeeView.dart';
 
 import 'package:login/pages/manager_view/employees/existingEmployee.dart';
 import 'package:login/pages/manager_view/employees/removedOrRetiredEmp.dart';
+import 'package:login/pages/manager_view/notification.dart';
 
 import 'package:login/pages/manager_view/overview/overview.dart';
 import 'package:login/pages/manager_view/profile/editProfileManager.dart';
 import 'package:login/pages/manager_view/profile/profile.dart';
 import 'package:login/pages/manager_view/projects/home/projectsCards.dart';
+import 'package:login/pages/manager_view/projects/manageEmployees/IndividualProfile.dart';
+import 'package:login/pages/manager_view/projects/manageEmployees/addEmpToProject.dart';
+import 'package:login/pages/manager_view/projects/manageEmployees/employeesAction.dart';
 import 'package:login/pages/manager_view/projects/projectAdd&Info/addProject.dart';
+import 'package:login/pages/manager_view/projects/projectAdd&Info/manageParticularProject.dart';
 import 'package:login/pages/manager_view/projects/projectAdd&Info/projectInfo.dart';
+import 'package:login/pages/manager_view/settings-manager/settingsManager.dart';
 import 'package:login/pages/manager_view/watchAllStatus.dart';
 import 'package:login/paint.dart';
 import 'package:login/pages/manager_view/managerHome.dart';
@@ -43,18 +49,27 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (BuildContext context) => new WelcomePage(),
         '/sketchPad': (BuildContext context) => new PaintPage(),
+        // '/maps':(BuildContext context)=>Maps(),
         //------------------------------------------------------------
         '/managerLoginPage': (BuildContext context) => new ManagerLoginPage(),
         '/employeeLoginPage': (BuildContext context) => new EmployeeLoginPage(),
         '/registerCompany': (BuildContext context) => new RegisterACompany(),
         //---------------------------------------------------------------
         '/managerHomePage': (BuildContext context) => new ManagerHomePage(),
+        '/settingsManager': (BuildContext context) =>SettingsManager(),
+        '/notifyManager':(BuildContext context)=> NotifyManager(),
         '/editManagerProfile': (BuildContext context) => new EditProfileManager(),
         '/managerProfile':(BuildContext context) => new Profile(),
         //---------------------------------------------------------------
         '/manageProjects': (BuildContext context) => new ManageProjects(),
+        '/addEmpToProject':(BuildContext context)=> AddEmpToProject(),
+        '/individualProfile':(BuildContext context)=>IndividualProfile(),
         '/watchAllStatus': (BuildContext context) => new WatchAllStatus(),
+        //---------------------------------------------------------------
         '/projectInfo': (BuildContext context) => new InfoPage(),
+        '/controlEmployees':(BuildContext context)=>new ControlEmployees(),
+        '/manageParticularProject':(BuildContext context)=>ManageParticularProject(),
+        //----------------------------------------------------------------
         '/addProject': (BuildContext context) => new AddProject(),
         '/overView': (BuildContext context) => new Overview(),
         //---------------------------------------------------------------

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:login/pages/manager_view/projects/projectAdd&Info/dialogCancelProject.dart';
-import 'package:login/pages/manager_view/projects/projectAdd&Info/dialogCompletedProject.dart';
 
 class InfoPage extends StatefulWidget {
   @override
@@ -99,8 +97,34 @@ class _InfoPageState extends State<InfoPage> {
               ),
               projectInfoDetailAndAddress(),
               callDetailContainerListTiles(),
-              manageEmployeeExpansionTile(),
-              finalizeActionExpansionTile(),
+              Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white),
+                  child: ListTile(
+                    title: Text(
+                      'Manage',
+                      style: TextStyle(color: Colors.green, fontSize: 22.0),
+                    ),
+                    trailing: CircleAvatar(
+                      backgroundColor: Colors.green,
+                      child: Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 22.0,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'Manage Employees | Finalize Actions',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    onTap: (){
+                      Navigator.of(context).pushNamed('/manageParticularProject');
+                    },
+                  )),
             ],
           ),
         ],
@@ -110,152 +134,75 @@ class _InfoPageState extends State<InfoPage> {
 
   Container projectInfoDetailAndAddress() {
     return Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.white),
-              width: double.infinity,
-              padding: EdgeInsets.all(10.0),
-              margin: EdgeInsets.all(10.0),
-              child: Column(
-                children: <Widget>[
-                  line(color: Colors.deepPurple, lineHeight: 5.0),
-                  box(),
-                  infoRow(
-                      infoIcon: Icon(Icons.description),
-                      infoText: "Description",
-                      detail: "Cross street is the prestigeous building"),
-                  box(),
-                  line(color: Colors.grey, lineHeight: 2.0),
-                  box(),
-                  infoRow(
-                      infoIcon: Icon(Icons.person),
-                      infoText: "Client",
-                      detail: "Jhon"),
-                  box(),
-                  line(color: Colors.grey, lineHeight: 2.0),
-                  box(),
-                  infoRow(
-                      infoIcon: Icon(Icons.place),
-                      infoText: "Address",
-                      detail:
-                          "#14 New BEL Road 2nd cross,Lime Street,Bangalore 560010 "),
-                  box(),
-                  line(color: Colors.deepPurple, lineHeight: 5.0),
-                ],
-              ),
-            );
-  }
-
-  Container callDetailContainerListTiles() {
-    return Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.white),
-              width: double.infinity,
-              padding: EdgeInsets.all(10.0),
-              margin: EdgeInsets.all(10.0),
-              child: Column(
-                children: <Widget>[
-                  detailsContainer(
-                      icon: Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                      ),
-                      designation: 'Client',
-                      name: 'Jhon',
-                      phno: '9140846273'),
-                  box(),
-                  detailsContainer(
-                      icon: Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                      ),
-                      designation: 'Site Manager',
-                      name: 'Ram',
-                      phno: '9140846273'),
-                  box(),
-                  detailsContainer(
-                      icon: Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                      ),
-                      designation: 'Project Manger',
-                      name: 'Sam',
-                      phno: '9140846273'),
-                ],
-              ),
-            );
-  }
-
-  Container finalizeActionExpansionTile() {
-    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0), color: Colors.white),
+      width: double.infinity,
+      padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(10.0),
-      color: Colors.white,
-      child: ExpansionTile(
-        title: Text(
-          'Finalize Actions',
-          style: TextStyle(color: Colors.deepPurple),
-        ),
-        initiallyExpanded: false,
-        leading: Icon(
-          Icons.call_to_action,
-          color: Colors.deepPurple,
-        ),
+      child: Column(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                projectCompletedButton(),
-                SizedBox(
-                  width: 5.0,
-                ),
-                projectCancelButton()
-              ],
-            ),
-          )
+          line(color: Colors.deepPurple, lineHeight: 5.0),
+          box(),
+          infoRow(
+              infoIcon: Icon(Icons.description),
+              infoText: "Description",
+              detail: "Cross street is the prestigeous building"),
+          box(),
+          line(color: Colors.grey, lineHeight: 2.0),
+          box(),
+          infoRow(
+              infoIcon: Icon(Icons.person), infoText: "Client", detail: "Jhon"),
+          box(),
+          line(color: Colors.grey, lineHeight: 2.0),
+          box(),
+          infoRow(
+            infoIcon: Icon(Icons.place),
+            infoText: "Address",
+            detail: "#14 New BEL Road 2nd cross,Lime Street,Bangalore 560010 ",
+            route: '/maps',
+          ),
+          box(),
+          line(color: Colors.deepPurple, lineHeight: 5.0),
         ],
       ),
     );
   }
 
-  Container manageEmployeeExpansionTile() {
+  Container callDetailContainerListTiles() {
     return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0), color: Colors.white),
+      width: double.infinity,
+      padding: EdgeInsets.all(10.0),
       margin: EdgeInsets.all(10.0),
-      color: Colors.white,
-      child: ExpansionTile(
-        initiallyExpanded: false,
-        title: Text('Manage Employees'),
-        leading: Icon(
-          Icons.settings,
-          color: Colors.deepPurple,
-        ),
+      child: Column(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0), color: Colors.white),
-            child: SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: FlatButton.icon(
-                icon: Icon(
-                  Icons.edit_attributes,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  'Manage Employees',
-                  style: TextStyle(color: Colors.white, letterSpacing: 2.0),
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                color: Colors.blueGrey,
-                splashColor: Colors.white70,
-                onPressed: () {},
+          detailsContainer(
+              icon: Icon(
+                Icons.phone,
+                color: Colors.white,
               ),
-            ),
-          )
+              designation: 'Client',
+              name: 'Jhon',
+              phno: '9140846273'),
+          box(),
+          detailsContainer(
+              icon: Icon(
+                Icons.phone,
+                color: Colors.white,
+              ),
+              designation: 'Site Manager',
+              name: 'Ram',
+              phno: '9140846273'),
+          box(),
+          detailsContainer(
+              icon: Icon(
+                Icons.phone,
+                color: Colors.white,
+              ),
+              designation: 'Project Manger',
+              name: 'Sam',
+              phno: '9140846273'),
         ],
       ),
     );
@@ -281,77 +228,19 @@ class _InfoPageState extends State<InfoPage> {
           onPressed: () {
             Navigator.of(context).pushNamed('/addProject');
           },
-        )
+        ),
+        IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/manageParticularProject');
+          },
+        ),
       ],
       elevation: 0.0,
       centerTitle: true,
     );
   }
 
-//--------------------------------Action Buttons----------------------------------------------
-  Expanded projectCancelButton() {
-    return Expanded(
-      child: SizedBox(
-        height: 50,
-        child: RaisedButton.icon(
-          onPressed: () async {
-            final action = await DialogCancel.deleteCancelAction(context,
-                'Are you sure to Delete/Cancel the Project?', 'Enter Pin');
-            if (action == CancelProjectDialogAction.delete) {
-              Navigator.of(context).canPop();
-            } else {
-              Navigator.of(context).canPop();
-            }
-          },
-          color: Colors.red,
-          splashColor: Colors.redAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          icon: Icon(
-            Icons.cancel,
-            color: Colors.white,
-          ),
-          label: Text(
-            'Cancel',
-            style: TextStyle(color: Colors.white, letterSpacing: 2.0),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Expanded projectCompletedButton() {
-    return Expanded(
-      child: SizedBox(
-        height: 50,
-        child: FlatButton.icon(
-          onPressed: () async {
-            final action = await Dialogs.deleteCancelAction(context,
-                'Are you sure you completed the project?', 'Enter Pin');
-            if (action == CompletedDialogAction.submit) {
-              Navigator.of(context).canPop();
-            } else {
-              Navigator.of(context).canPop();
-            }
-          },
-          color: Colors.green,
-          splashColor: Colors.greenAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          icon: Icon(
-            Icons.done,
-            color: Colors.white,
-          ),
-          label: Text(
-            'Completed',
-            style: TextStyle(color: Colors.white, letterSpacing: 2.0),
-          ),
-        ),
-      ),
-    );
-  }
-
-//---------------------------------------------------------------------------------
   Container detailsContainer(
       {Icon icon, String name, String designation, String phno}) {
     return Container(
@@ -360,7 +249,18 @@ class _InfoPageState extends State<InfoPage> {
             color: Colors.deepPurple),
         child: ListTile(
           onTap: () {},
-          leading: icon,
+          leading: Stack(
+            alignment: Alignment.bottomRight,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/tom.jpg'),
+              ),
+              Positioned(
+                height: 20,
+                child: icon,
+              )
+            ],
+          ),
           title: Text(
             designation,
             style: TextStyle(color: Colors.white),
@@ -383,7 +283,11 @@ class _InfoPageState extends State<InfoPage> {
   }
 
   Row infoRow(
-      {String infoText, Icon infoIcon, String detail, Color textColor}) {
+      {String infoText,
+      Icon infoIcon,
+      String detail,
+      String route,
+      Color textColor}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -392,12 +296,9 @@ class _InfoPageState extends State<InfoPage> {
           width: MediaQuery.of(context).size.width / 2,
           child: Row(
             children: <Widget>[
-              IconButton(
-                icon: infoIcon,
-                onPressed: () {},
-              ),
+              infoIcon,
               SizedBox(
-                width: 1.0,
+                width: 10.0,
               ),
               Text(
                 infoText,
