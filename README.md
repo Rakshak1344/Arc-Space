@@ -1,8 +1,8 @@
-## Arc Space
+# Arc Space
 
 A project on construct management 
 
-# About
+## About
 Arc space is under the development process
 
 Arc space helps the middle-level management and top-level management under the construct site
@@ -13,9 +13,9 @@ Arc space helps the middle-level management and top-level management under the c
 - salary and auditing makes easier at the quater/half/year ending
 - purchase and sales record maintaining to keep track of the entire individual construction project
 
-# Getting Started
+## Getting Started
   Dummy values to be provided for login. 
 
-# Project status
+## Project status
  currently working on manager's view 
  Employee's view is pending.
