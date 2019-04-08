@@ -1,6 +1,6 @@
 # Arc Space
 
-A project on construct management 
+A project on construction management 
 
 ## About
 Arc space is under the development process
